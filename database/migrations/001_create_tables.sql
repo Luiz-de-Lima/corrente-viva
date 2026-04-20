@@ -1,5 +1,3 @@
--- CorrenteViva - Migration inicial
-
 CREATE TABLE responsaveis (
   id SERIAL PRIMARY KEY,
   nome VARCHAR(100) NOT NULL,

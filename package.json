@@ -1,0 +1,21 @@
+{
+  "name": "corrente-viva",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:Luiz-de-Lima/corrente-viva.git",
+  "author": "luiz de Lima <luiz12359@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
+    "pg": "^8.20.0"
+  },
+  "scripts": {
+    "dev":"nodemon src/index.js"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}
