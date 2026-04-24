@@ -15,37 +15,76 @@ function ListaAbrigos() {
     },[])
 
     return (
-    <div className="min-h-screen bg-gray-100">
-      <header className="bg-blue-600 text-white p-4 text-center">
-        <h1 className="text-2xl font-bold">CorrenteViva</h1>
-        <p className="text-sm mt-1">Encontre um abrigo disponível</p>
+   <div style={{ minHeight: '100vh', background: '#f0f4f8', fontFamily: 'system-ui, sans-serif' }}>
+      <header style={{
+        background: '#1a56a0',
+        padding: '1.5rem 1rem',
+        textAlign: 'center',
+        boxShadow: '0 2px 8px rgba(0,0,0,0.15)'
+      }}>
+        <h1 style={{ color: '#fff', fontSize: '1.8rem', fontWeight: '700', margin: 0 }}>
+          CorrenteViva
+        </h1>
+        <p style={{ color: '#b8d4f0', fontSize: '0.9rem', margin: '0.3rem 0 0' }}>
+          Encontre um abrigo disponível perto de você
+        </p>
       </header>
 
-      <main className="max-w-2xl mx-auto p-4">
+      <main style={{ maxWidth: '640px', margin: '0 auto', padding: '1.5rem 1rem' }}>
         {carregando ? (
-          <p className="text-center text-gray-500 mt-8">Carregando abrigos...</p>
+          <p style={{ textAlign: 'center', color: '#6b7280', marginTop: '3rem' }}>
+            Carregando abrigos...
+          </p>
         ) : abrigos.length === 0 ? (
-          <p className="text-center text-gray-500 mt-8">Nenhum abrigo cadastrado.</p>
+          <p style={{ textAlign: 'center', color: '#6b7280', marginTop: '3rem' }}>
+            Nenhum abrigo cadastrado no momento.
+          </p>
         ) : (
-          <div className="flex flex-col gap-4 mt-4">
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
             {abrigos.map((abrigo) => (
-              <div key={abrigo.id} className="bg-white rounded-xl shadow p-4">
-                <div className="flex justify-between items-center">
-                  <h2 className="text-lg font-semibold text-gray-800">{abrigo.nome}</h2>
-                  <span className={`text-sm font-medium px-3 py-1 rounded-full ${
-                    abrigo.status === 'disponivel'
-                      ? 'bg-green-100 text-green-700'
-                      : 'bg-red-100 text-red-700'
-                  }`}>
+              <div key={abrigo.id} style={{
+                background: '#fff',
+                borderRadius: '12px',
+                padding: '1.25rem',
+                boxShadow: '0 1px 4px rgba(0,0,0,0.08)',
+                borderLeft: `4px solid ${abrigo.status === 'disponivel' ? '#16a34a' : '#dc2626'}`
+              }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+                  <h2 style={{ fontSize: '1.1rem', fontWeight: '600', color: '#1e293b', margin: 0 }}>
+                    {abrigo.nome}
+                  </h2>
+                  <span style={{
+                    fontSize: '0.75rem',
+                    fontWeight: '600',
+                    padding: '0.25rem 0.75rem',
+                    borderRadius: '999px',
+                    background: abrigo.status === 'disponivel' ? '#dcfce7' : '#fee2e2',
+                    color: abrigo.status === 'disponivel' ? '#16a34a' : '#dc2626'
+                  }}>
                     {abrigo.status === 'disponivel' ? 'Disponível' : 'Lotado'}
                   </span>
                 </div>
-                <p className="text-gray-500 text-sm mt-1">{abrigo.endereco}</p>
-                <p className="text-gray-600 text-sm mt-2">
-                  Vagas disponíveis: <span className="font-semibold">{abrigo.vagas_disponiveis}</span> de <span className="font-semibold">{abrigo.capacidade_total}</span>
+
+                <p style={{ color: '#64748b', fontSize: '0.875rem', margin: '0.5rem 0 0' }}>
+                  {abrigo.endereco}
                 </p>
+
+                <div style={{
+                  marginTop: '1rem',
+                  background: '#f8fafc',
+                  borderRadius: '8px',
+                  padding: '0.75rem',
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center'
+                }}>
+                  <span style={{ fontSize: '0.875rem', color: '#64748b' }}>Vagas disponíveis</span>
+                  <span style={{ fontSize: '1rem', fontWeight: '700', color: '#1a56a0' }}>
+                    {abrigo.vagas_disponiveis} / {abrigo.capacidade_total}
+                  </span>
+                </div>
               </div>
-            ))}
+            ))} 
           </div>
         )}
       </main>
