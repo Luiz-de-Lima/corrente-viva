@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-
+import { useNavigate } from "react-router-dom";
 import { checkin, getAbrigos } from "../services/api";
 
 function Checkin() {
@@ -12,7 +12,7 @@ function Checkin() {
   const [mensagem, setMensagem] = useState(null);
   const [erro, setErro] = useState(null);
   const [carregando, setCarregando] = useState(false);
-
+  const navigate = useNavigate();
   useEffect(() => {
     getAbrigos().then((data) => {
       setAbrigos(data.filter((a) => a.status === "disponivel"));
@@ -42,59 +42,25 @@ function Checkin() {
   };
 
   return (
-    <div
-      style={{
-        minHeight: "100vh",
-        background: "#f0f4f8",
-        fontFamily: "system-ui, sans-serif",
-      }}
-    >
-      <header
-        style={{
-          background: "#1a56a0",
-          padding: "1.5rem 1rem",
-          textAlign: "center",
-          boxShadow: "0 2px 8px rgba(0,0,0,0.15)",
-        }}
-      >
-        <h1
-          style={{
-            color: "#fff",
-            fontSize: "1.8rem",
-            fontWeight: "700",
-            margin: 0,
-          }}
-        >
-          CorrenteViva
-        </h1>
-        <p
-          style={{ color: "#b8d4f0", fontSize: "0.9rem", margin: "0.3rem 0 0" }}
-        >
+    <div className="min-h-screen bg-gray-100">
+      <header className="bg-blue-700 px-4 py-6 text-center shadow-md">
+        <h1 className="text-white text-3xl font-bold">CorrenteViva</h1>
+        <p className="text-blue-200 text-sm mt-1">
           Registre sua chegada no abrigo
         </p>
       </header>
 
-      <main
-        style={{ maxWidth: "640px", margin: "0 auto", padding: "1.5rem 1rem" }}
-      >
-        <div
-          style={{
-            background: "#fff",
-            borderRadius: "12px",
-            padding: "1.5rem",
-            boxShadow: "0 1px 4px rgba(0,0,0,0.08)",
-          }}
+      <main className="max-w-2xl mx-auto px-4 py-6">
+        <button
+          onClick={() => navigate("/")}
+          className="text-blue-700 text-sm font-semibold mb-6 hover:underline"
         >
-          <div style={{ marginBottom: "1rem" }}>
-            <label
-              style={{
-                fontSize: "0.875rem",
-                fontWeight: "600",
-                color: "#1e293b",
-                display: "block",
-                marginBottom: "0.4rem",
-              }}
-            >
+          ← Voltar para lista de abrigos
+        </button>
+
+        <div className="bg-white rounded-xl shadow-sm p-6">
+          <div className="mb-4">
+            <label className="block text-sm font-semibold text-slate-700 mb-1">
               Nome da família
             </label>
             <input
@@ -104,27 +70,12 @@ function Checkin() {
               onChange={(e) =>
                 setForm({ ...form, nome_familia: e.target.value })
               }
-              style={{
-                width: "100%",
-                padding: "0.75rem",
-                borderRadius: "8px",
-                border: "1px solid #cbd5e1",
-                fontSize: "0.95rem",
-                boxSizing: "border-box",
-              }}
+              className="w-full px-4 py-3 rounded-lg border border-slate-300 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
 
-          <div style={{ marginBottom: "1rem" }}>
-            <label
-              style={{
-                fontSize: "0.875rem",
-                fontWeight: "600",
-                color: "#1e293b",
-                display: "block",
-                marginBottom: "0.4rem",
-              }}
-            >
+          <div className="mb-4">
+            <label className="block text-sm font-semibold text-slate-700 mb-1">
               Quantidade de pessoas
             </label>
             <input
@@ -134,41 +85,18 @@ function Checkin() {
               onChange={(e) =>
                 setForm({ ...form, quantidade_pessoas: e.target.value })
               }
-              style={{
-                width: "100%",
-                padding: "0.75rem",
-                borderRadius: "8px",
-                border: "1px solid #cbd5e1",
-                fontSize: "0.95rem",
-                boxSizing: "border-box",
-              }}
+              className="w-full px-4 py-3 rounded-lg border border-slate-300 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
 
-          <div style={{ marginBottom: "1.5rem" }}>
-            <label
-              style={{
-                fontSize: "0.875rem",
-                fontWeight: "600",
-                color: "#1e293b",
-                display: "block",
-                marginBottom: "0.4rem",
-              }}
-            >
+          <div className="mb-6">
+            <label className="block text-sm font-semibold text-slate-700 mb-1">
               Abrigo
             </label>
             <select
               value={form.abrigo_id}
               onChange={(e) => setForm({ ...form, abrigo_id: e.target.value })}
-              style={{
-                width: "100%",
-                padding: "0.75rem",
-                borderRadius: "8px",
-                border: "1px solid #cbd5e1",
-                fontSize: "0.95rem",
-                boxSizing: "border-box",
-                background: "#fff",
-              }}
+              className="w-full px-4 py-3 rounded-lg border border-slate-300 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white"
             >
               <option value="">Selecione um abrigo</option>
               {abrigos.map((a) => (
@@ -180,33 +108,13 @@ function Checkin() {
           </div>
 
           {mensagem && (
-            <div
-              style={{
-                background: "#dcfce7",
-                color: "#16a34a",
-                padding: "0.75rem 1rem",
-                borderRadius: "8px",
-                fontSize: "0.875rem",
-                marginBottom: "1rem",
-                fontWeight: "600",
-              }}
-            >
+            <div className="bg-green-100 text-green-700 px-4 py-3 rounded-lg text-sm font-semibold mb-4">
               {mensagem}
             </div>
           )}
 
           {erro && (
-            <div
-              style={{
-                background: "#fee2e2",
-                color: "#dc2626",
-                padding: "0.75rem 1rem",
-                borderRadius: "8px",
-                fontSize: "0.875rem",
-                marginBottom: "1rem",
-                fontWeight: "600",
-              }}
-            >
+            <div className="bg-red-100 text-red-700 px-4 py-3 rounded-lg text-sm font-semibold mb-4">
               {erro}
             </div>
           )}
@@ -214,17 +122,7 @@ function Checkin() {
           <button
             onClick={handleSubmit}
             disabled={carregando}
-            style={{
-              width: "100%",
-              padding: "0.875rem",
-              background: "#1a56a0",
-              color: "#fff",
-              border: "none",
-              borderRadius: "8px",
-              fontSize: "1rem",
-              fontWeight: "600",
-              cursor: "pointer",
-            }}
+            className="w-full bg-blue-700 hover:bg-blue-800 text-white font-semibold py-3 rounded-lg transition"
           >
             {carregando ? "Registrando..." : "Confirmar chegada"}
           </button>

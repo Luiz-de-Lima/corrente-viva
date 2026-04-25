@@ -22,129 +22,39 @@ function Login() {
       setErro("Email ou senha inválidos");
     }
   };
-  return (
-    <div
-      style={{
-        minHeight: "100vh",
-        background: "#f0f4f8",
-        fontFamily: "system-ui, sans-serif",
-        display: "flex",
-        flexDirection: "column",
-      }}
-    >
-      <header
-        style={{
-          background: "#1a56a0",
-          padding: "1.5rem 1rem",
-          textAlign: "center",
-          boxShadow: "0 2px 8px rgba(0,0,0,0.15)",
-        }}
-      >
-        <h1
-          style={{
-            color: "#fff",
-            fontSize: "1.8rem",
-            fontWeight: "700",
-            margin: 0,
-          }}
-        >
-          CorrenteViva
-        </h1>
-        <p
-          style={{ color: "#b8d4f0", fontSize: "0.9rem", margin: "0.3rem 0 0" }}
-        >
-          Acesso para responsáveis
-        </p>
+  return(
+    <div className="min-h-screen bg-gray-100 flex flex-col">
+      <header className="bg-blue-700 px-4 py-6 text-center shadow-md">
+        <h1 className="text-white text-3xl font-bold">CorrenteViva</h1>
+        <p className="text-blue-200 text-sm mt-1">Acesso para responsáveis</p>
       </header>
 
-      <main
-        style={{
-          flex: 1,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          padding: "1rem",
-          width: "100%",
-        }}
-      >
-        <div
-          style={{
-            background: "#fff",
-            borderRadius: "12px",
-            padding: "1.5rem",
-            boxShadow: "0 1px 4px rgba(0,0,0,0.08)",
-            width: "100%",
-            maxWidth: "580px",
-          }}
-        >
-          <div style={{ marginBottom: "1rem" }}>
-            <label
-              style={{
-                fontSize: "0.875rem",
-                fontWeight: "600",
-                color: "#1e293b",
-                display: "block",
-                marginBottom: "0.4rem",
-              }}
-            >
-              Email
-            </label>
+      <main className="flex-1 flex items-center justify-center px-4">
+        <div className="bg-white rounded-xl shadow-sm p-8 w-full max-w-md">
+          <div className="mb-4">
+            <label className="block text-sm font-semibold text-slate-700 mb-1">Email</label>
             <input
               type="email"
               placeholder="seu@email.com"
               value={form.email}
               onChange={(e) => setForm({ ...form, email: e.target.value })}
-              style={{
-                width: "100%",
-                padding: "0.75rem",
-                borderRadius: "8px",
-                border: "1px solid #cbd5e1",
-                fontSize: "0.95rem",
-                boxSizing: "border-box",
-              }}
+              className="w-full px-4 py-3 rounded-lg border border-slate-300 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
 
-          <div style={{ marginBottom: "1.5rem" }}>
-            <label
-              style={{
-                fontSize: "0.875rem",
-                fontWeight: "600",
-                color: "#1e293b",
-                display: "block",
-                marginBottom: "0.4rem",
-              }}
-            >
-              Senha
-            </label>
+          <div className="mb-6">
+            <label className="block text-sm font-semibold text-slate-700 mb-1">Senha</label>
             <input
               type="password"
               placeholder="••••••••"
               value={form.senha}
               onChange={(e) => setForm({ ...form, senha: e.target.value })}
-              style={{
-                width: "100%",
-                padding: "0.75rem",
-                borderRadius: "8px",
-                border: "1px solid #cbd5e1",
-                fontSize: "0.95rem",
-                boxSizing: "border-box",
-              }}
+              className="w-full px-4 py-3 rounded-lg border border-slate-300 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
 
           {erro && (
-            <div
-              style={{
-                background: "#fee2e2",
-                color: "#dc2626",
-                padding: "0.75rem 1rem",
-                borderRadius: "8px",
-                fontSize: "0.875rem",
-                marginBottom: "1rem",
-                fontWeight: "600",
-              }}
-            >
+            <div className="bg-red-100 text-red-700 px-4 py-3 rounded-lg text-sm font-semibold mb-4">
               {erro}
             </div>
           )}
@@ -152,24 +62,14 @@ function Login() {
           <button
             onClick={handleSubmit}
             disabled={carregando}
-            style={{
-              width: "100%",
-              padding: "0.875rem",
-              background: "#1a56a0",
-              color: "#fff",
-              border: "none",
-              borderRadius: "8px",
-              fontSize: "1rem",
-              fontWeight: "600",
-              cursor: "pointer",
-            }}
+            className="w-full bg-blue-700 hover:bg-blue-800 text-white font-semibold py-3 rounded-lg transition"
           >
-            {carregando ? "Entrando..." : "Entrar"}
+            {carregando ? 'Entrando...' : 'Entrar'}
           </button>
         </div>
       </main>
     </div>
-  );
+  )
 }
 
 export default Login;

@@ -19,7 +19,7 @@ export const checkin = async (dados) => {
 export const login = async (dados) => {
   const response = await fetch(`${API_URL}/auth/login`, {
     method: "POST",
-    headers: { "Contet-Type": "application/json" },
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify(dados),
   });
   const data = await response.json();
