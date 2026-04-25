@@ -1,14 +1,20 @@
 const express = require("express");
-
 const app = express();
+const cors = require("cors");
 require("dotenv").config();
+
+app.use(cors({
+  origin: 'http://localhost:5173',
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'authorization']
+}))
 
 app.use(express.json());
 
 const responsaveisRoutes = require("./routes/responsaveis.js");
 const authRoutes = require("./routes/auth.js");
 const abrigosRoutes = require("./routes/abrigos.js");
-const familiasRouter=require("./routes/familias.js")
+const familiasRouter = require("./routes/familias.js");
 
 app.use("/responsaveis", responsaveisRoutes);
 app.use("/auth", authRoutes);
