@@ -27,9 +27,9 @@ export const login = async (dados) => {
 };
 
 export const cadastrarAbrigo = async (dados, token) => {
-  const response = await fetch(`${API_URL}/auth/abrigos`, {
+  const response = await fetch(`${API_URL}/abrigos`, {
     method: "POST",
-    headers: { "Contet-Type": "application/json", authorization: token },
+    headers: { "Content-Type": "application/json", authorization: token },
     body: JSON.stringify(dados),
   });
   const data = await response.json();
