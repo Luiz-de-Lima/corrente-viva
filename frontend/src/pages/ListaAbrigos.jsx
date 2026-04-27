@@ -8,7 +8,7 @@ function ListaAbrigos() {
 
   useEffect(() => {
     getAbrigos().then((data) => {
-      setAbrigos(data);
+      setAbrigos(Array.isArray(data)?data:[]);
       setCarregando(false);
     });
   }, []);
