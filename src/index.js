@@ -3,11 +3,13 @@ const app = express();
 const cors = require("cors");
 require("dotenv").config();
 
-app.use(cors({
-  origin: 'http://localhost:5173',
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  allowedHeaders: ['Content-Type', 'authorization']
-}))
+app.use(
+  cors({
+    origin: ["http://localhost:5173", "https://corrente-viva.vercel.app"],
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "authorization"],
+  }),
+);
 
 app.use(express.json());
 
