@@ -63,7 +63,7 @@ function Painel() {
 
       <main className="max-w-2xl mx-auto px-4 py-8">
         <Link
-          to="/"
+          to="/abrigos"
           className="inline-block text-blue-700 text-sm font-semibold mb-6 hover:underline"
         >
           ← Ver lista de abrigos
@@ -115,8 +115,16 @@ function Painel() {
           </div>
 
           {mensagem && (
-            <div className="bg-green-100 text-green-700 px-4 py-3 rounded-lg text-sm font-semibold mb-4">
-              {mensagem}
+            <div>
+              <div className="bg-green-100 text-green-700 px-4 py-3 rounded-lg text-sm font-semibold mb-4">
+                {mensagem}
+              </div>
+              <button
+                onClick={() => navigate("/")}
+                className="w-full bg-green-700 hover:bg-green-800 text-white font-semibold py-3 rounded-lg transition mb-3"
+              >
+                Voltar ao início
+              </button>
             </div>
           )}
 

@@ -51,12 +51,14 @@ function Checkin() {
       </header>
 
       <main className="max-w-2xl mx-auto px-4 py-6">
-        <button
-          onClick={() => navigate("/")}
-          className="text-blue-700 text-sm font-semibold mb-6 hover:underline"
-        >
-          ← Voltar para lista de abrigos
-        </button>
+        <div className="flex justify-between items-center mb-6">
+          <button
+            onClick={() => navigate("/")}
+            className="text-blue-700 text-sm font-semibold hover:underline"
+          >
+            ← Voltar
+          </button>
+        </div>
 
         <div className="bg-white rounded-xl shadow-sm p-6">
           <div className="mb-4">
@@ -108,8 +110,16 @@ function Checkin() {
           </div>
 
           {mensagem && (
-            <div className="bg-green-100 text-green-700 px-4 py-3 rounded-lg text-sm font-semibold mb-4">
-              {mensagem}
+            <div>
+              <div className="bg-green-100 text-green-700 px-4 py-3 rounded-lg text-sm font-semibold mb-4">
+                {mensagem}
+              </div>
+              <button
+                onClick={() => navigate("/")}
+                className="w-full bg-green-700 hover:bg-green-800 text-white font-semibold py-3 rounded-lg transition"
+              >
+                Voltar ao início
+              </button>
             </div>
           )}
 
