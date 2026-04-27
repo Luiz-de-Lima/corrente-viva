@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { cadastrarAbrigo } from "../services/api";
 
 function Painel() {
@@ -62,6 +62,12 @@ function Painel() {
       </header>
 
       <main className="max-w-2xl mx-auto px-4 py-8">
+        <Link
+          to="/"
+          className="inline-block text-blue-700 text-sm font-semibold mb-6 hover:underline"
+        >
+          ← Ver lista de abrigos
+        </Link>
         <div className="bg-white rounded-xl shadow-sm p-6">
           <h2 className="text-lg font-semibold text-slate-800 mb-6">
             Cadastrar novo abrigo
