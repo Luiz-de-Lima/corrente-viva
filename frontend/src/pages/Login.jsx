@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,Link } from "react-router-dom";
 import { login } from "../services/api";
 
 function Login() {
@@ -22,7 +22,7 @@ function Login() {
       setErro("Email ou senha inválidos");
     }
   };
-  return(
+  return (
     <div className="min-h-screen bg-gray-100 flex flex-col">
       <header className="bg-blue-700 px-4 py-6 text-center shadow-md">
         <h1 className="text-white text-3xl font-bold">CorrenteViva</h1>
@@ -32,7 +32,9 @@ function Login() {
       <main className="flex-1 flex items-center justify-center px-4">
         <div className="bg-white rounded-xl shadow-sm p-8 w-full max-w-md">
           <div className="mb-4">
-            <label className="block text-sm font-semibold text-slate-700 mb-1">Email</label>
+            <label className="block text-sm font-semibold text-slate-700 mb-1">
+              Email
+            </label>
             <input
               type="email"
               placeholder="seu@email.com"
@@ -43,7 +45,9 @@ function Login() {
           </div>
 
           <div className="mb-6">
-            <label className="block text-sm font-semibold text-slate-700 mb-1">Senha</label>
+            <label className="block text-sm font-semibold text-slate-700 mb-1">
+              Senha
+            </label>
             <input
               type="password"
               placeholder="••••••••"
@@ -64,12 +68,22 @@ function Login() {
             disabled={carregando}
             className="w-full bg-blue-700 hover:bg-blue-800 text-white font-semibold py-3 rounded-lg transition"
           >
-            {carregando ? 'Entrando...' : 'Entrar'}
+            {carregando ? "Entrando..." : "Entrar"}
           </button>
+
+          <p className="text-center text-sm text-slate-500 mt-4">
+            Ainda não tem conta?{" "}
+            <Link
+              to="/cadastro"
+              className="text-blue-700 font-semibold hover:underline"
+            >
+              Cadastre-se
+            </Link>
+          </p>
         </div>
       </main>
     </div>
-  )
+  );
 }
 
 export default Login;

@@ -59,6 +59,12 @@ function Painel() {
         >
           Sair
         </button>
+        <Link
+          to="/"
+          className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/20 text-white text-sm font-semibold px-4 py-2 rounded-lg hover:bg-white/30 transition"
+        >
+          ← Início
+        </Link>
       </header>
 
       <main className="max-w-2xl mx-auto px-4 py-8">
