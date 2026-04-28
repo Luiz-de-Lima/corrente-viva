@@ -8,6 +8,8 @@ app.use(
     origin: ["http://localhost:5173", "https://corrente-viva.vercel.app"],
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "authorization"],
+    reflightContinue: false,
+    optionsSuccessStatus: 204
   }),
 );
 
