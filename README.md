@@ -119,6 +119,11 @@ yarn dev
 
 Acesse `http://localhost:5173`
 
+## 🌐 Acesse o projeto
+
+[https://corrente-viva.vercel.app](https://corrente-viva.vercel.app)
+
 ## 7. Autor
 
 Desenvolvido por Luiz de Lima como projeto final do curso vai na web,
+
