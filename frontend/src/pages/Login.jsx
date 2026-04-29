@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate,Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { login } from "../services/api";
 
 function Login() {
@@ -27,6 +27,12 @@ function Login() {
       <header className="bg-blue-700 px-4 py-6 text-center shadow-md">
         <h1 className="text-white text-3xl font-bold">CorrenteViva</h1>
         <p className="text-blue-200 text-sm mt-1">Acesso para responsáveis</p>
+        <Link
+          to="/"
+          className="text-blue-200 text-xs mt-2 inline-block hover:text-white"
+        >
+          ← Voltar ao início
+        </Link>
       </header>
 
       <main className="flex-1 flex items-center justify-center px-4">
